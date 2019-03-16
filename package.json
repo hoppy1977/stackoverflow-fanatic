@@ -1,0 +1,26 @@
+{
+  "name": "stackoverflow-fanatic",
+  "version": "1.0.0",
+  "description": "AWS Lambda method to 'visit' stackoverflow for the Enthusiast &amp; Fanatic badges",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hoppy1977/stackoverflow-fanatic.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hoppy1977/stackoverflow-fanatic/issues"
+  },
+  "homepage": "https://github.com/hoppy1977/stackoverflow-fanatic#readme",
+  "dependencies": {
+    "npm": "^6.9.0"
+  },
+  "devDependencies": {
+    "serverless": "^1.39.0"
+  }
+}
