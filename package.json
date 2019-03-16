@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/hoppy1977/stackoverflow-fanatic#readme",
   "dependencies": {
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "serverless-chrome": "0.0.1"
   },
   "devDependencies": {
     "serverless": "^1.39.0"
