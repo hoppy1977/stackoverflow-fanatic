@@ -19,6 +19,7 @@
   "homepage": "https://github.com/hoppy1977/stackoverflow-fanatic#readme",
   "dependencies": {
     "npm": "^6.9.0",
+    "selenium-webdriver": "^4.0.0-alpha.5",
     "serverless-chrome": "0.0.1"
   },
   "devDependencies": {
