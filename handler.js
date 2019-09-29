@@ -1,10 +1,10 @@
 'use strict';
 
-const {Builder, By, Key, until} = require('selenium-webdriver');
+const {Builder, By, until} = require('selenium-webdriver');
 
 const email = "shanehopcroft@hotmail.com";
-const password = "shane1977";
-const displayName = "Shane Hopcroft";
+const password = "<REDACTED>";
+const displayName = "Hoppy";
 
 module.exports.login = async (event, context) => {
 
@@ -22,25 +22,31 @@ module.exports.login = async (event, context) => {
     await driver.findElement(By.id("password")).sendKeys(password);
     await driver.findElement(By.id("submit-button")).click();
 
-    await driver
-      .wait(until.elementLocated(By.className("my-profile js-gps-track")), 5 * 1000)
-      .then(console.log("aaa"))
-      .then(driver.findElement(By.className("my-profile js-gps-track")).click())
-      .then(console.log("bbb"))
-      //.then(driver.wait(until.elementLocated(By.className("mini-avatar")), 5 * 1000))
-      //.then(avatarElement => avatarElement.findElement(By.className("name")))
-      //.then(avatarNameElement => avatarNameElement.getText())
-      .then(console.log("Whaaaat?!!?"))
-      .catch(ex => {
-          console.log(ex);
-      });
-      //;      
+    await driver.wait(until.elementLocated(By.className("my-profile")), 5 * 1000);
+    await driver.findElement(By.className("my-profile")).click();
+    await driver.wait(until.elementLocated(By.className("mini-avatar")), 5 * 1000);
+
+    let avatarElement = await driver.findElement(By.className("mini-avatar"));
+    let avatarNameElement = await avatarElement.findElement(By.className("name"));
+
+    await avatarNameElement.getText()
+      .then(actualDisplayName => {
+
+      if(actualDisplayName == displayName) {
+        console.log("Logged into stackoverflow.com and accessed profile page")
+      } else {
+        console.error(`Error: We were expecting the profile name to be '${displayName}', but it was '${actualDisplayName}'`);
+      }
+    })
+ 
+  } catch(ex) {
+    console.Error(ex);
   } finally {
     console.log("Terminating driver");
     await driver.quit();
   }
 
-  driver.sleep(10000);
+  driver.sleep(1000);
 
   return {
     statusCode: 200,
