@@ -2,10 +2,6 @@
 
 const {Builder, By, until} = require('selenium-webdriver');
 
-const email = "shanehopcroft@hotmail.com";
-const password = "<REDACTED>";
-const displayName = "Hoppy";
-
 module.exports.login = async (event, context) => {
 
   console.log("Logging into stackoverflow.com");
@@ -18,8 +14,8 @@ module.exports.login = async (event, context) => {
     await driver.get("https://stackoverflow.com");
     await driver.findElement(By.linkText("Log in")).click();
 
-    await driver.findElement(By.id("email")).sendKeys(email);
-    await driver.findElement(By.id("password")).sendKeys(password);
+    await driver.findElement(By.id("email")).sendKeys(process.env.STACKOVERFLOW_EMAIL);
+    await driver.findElement(By.id("password")).sendKeys(process.env.STACKOVERFLOW_PASSWORD);
     await driver.findElement(By.id("submit-button")).click();
 
     await driver.wait(until.elementLocated(By.className("my-profile")), 5 * 1000);
@@ -32,10 +28,11 @@ module.exports.login = async (event, context) => {
     await avatarNameElement.getText()
       .then(actualDisplayName => {
 
-      if(actualDisplayName == displayName) {
+      const expectedDisplayName = process.env.STACKOVERFLOW_DISPLAYNAME;
+      if(actualDisplayName == expectedDisplayName) {
         console.log("Logged into stackoverflow.com and accessed profile page")
       } else {
-        console.error(`Error: We were expecting the profile name to be '${displayName}', but it was '${actualDisplayName}'`);
+        console.error(`Error: We were expecting the profile name to be '${expectedDisplayName}', but it was '${actualDisplayName}'`);
       }
     })
  
