@@ -19,6 +19,6 @@ functions:
   login:
     handler: handler.login
     environment:
-      STACKOVERFLOW_EMAIL: shanehopcroft@hotmail.com
-      STACKOVERFLOW_PASSWORD: <REDACTED>
-      STACKOVERFLOW_DISPLAYNAME: Hoppy
+      STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
+      STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
+      STACKOVERFLOW_DISPLAYNAME: ${ssm:/StackOverflowFanatic/StackOverflow/DisplayName}
