@@ -22,3 +22,6 @@ functions:
       STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
       STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
       STACKOVERFLOW_DISPLAYNAME: ${ssm:/StackOverflowFanatic/StackOverflow/DisplayName}
+
+plugins:
+  - serverless-plugin-chrome      
