@@ -18,7 +18,8 @@
   },
   "homepage": "https://github.com/hoppy1977/stackoverflow-fanatic#readme",
   "dependencies": {
-    "npm": "^6.9.0"
+    "npm": "^6.9.0",
+    "puppeteer": "^1.20.0"
   },
   "devDependencies": {
     "serverless": "^1.53.0"
