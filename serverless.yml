@@ -6,14 +6,9 @@ provider:
   stage: dev
   region: ap-southeast-2
 
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
+package:
+  exclude:
+    - node_modules/puppeteer/.local-chromium/**
 
 functions:
   login:
@@ -24,4 +19,4 @@ functions:
       STACKOVERFLOW_DISPLAYNAME: ${ssm:/StackOverflowFanatic/StackOverflow/DisplayName}
 
 plugins:
-  - serverless-plugin-chrome      
+  - serverless-plugin-chrome
