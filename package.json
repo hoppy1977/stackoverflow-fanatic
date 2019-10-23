@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/hoppy1977/stackoverflow-fanatic#readme",
   "dependencies": {
+    "chrome-aws-lambda": "^1.20.4",
     "npm": "^6.9.0",
     "puppeteer": "^1.20.0"
   },
