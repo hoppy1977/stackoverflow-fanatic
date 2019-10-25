@@ -6,19 +6,13 @@ provider:
   stage: dev
   region: ap-southeast-2
 
-# you can add packaging information here
-#package:
-#  include:
-#    - include-me.js
-#    - include-me-dir/**
-#  exclude:
-#    - exclude-me.js
-#    - exclude-me-dir/**
-
 functions:
   login:
     handler: handler.login
     memorySize: 2048
+    timeout: 30
+    events:
+      - schedule: rate(3 hours)
     environment:
       STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
       STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
