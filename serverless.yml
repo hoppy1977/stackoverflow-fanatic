@@ -18,6 +18,7 @@ provider:
 functions:
   login:
     handler: handler.login
+    memorySize: 2048
     environment:
       STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
       STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
