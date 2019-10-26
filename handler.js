@@ -1,6 +1,7 @@
 'use strict';
 
 const chromium = require('chrome-aws-lambda');
+const puppeteer = require('puppeteer');
 
 module.exports.login = async (event, context) => {
 
@@ -9,12 +10,19 @@ module.exports.login = async (event, context) => {
   let browser = null;
 
   try {
-    browser = await chromium.puppeteer.launch({
-      args: chromium.args,
-      defaultViewport: chromium.defaultViewport,
-      executablePath: await chromium.executablePath,
-      headless: chromium.headless,
-    });
+    console.log("IS_LOCAL: " + process.env.IS_LOCAL);
+    if(process.env.IS_LOCAL) {
+      browser = await puppeteer.launch({
+          //headless: false
+      });
+    } else {
+      browser = await chromium.puppeteer.launch({
+        args: chromium.args,
+        defaultViewport: chromium.defaultViewport,
+        executablePath: await chromium.executablePath,
+        headless: chromium.headless,
+      });
+    }
 
     let page = await browser.newPage();
 

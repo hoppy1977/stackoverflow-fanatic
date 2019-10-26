@@ -2,7 +2,7 @@ service: stackoverflow-fanatic
 
 provider:
   name: aws
-  runtime: nodejs8.10
+  runtime: nodejs10.x
   stage: dev
   region: ap-southeast-2
 
