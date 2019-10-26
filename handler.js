@@ -1,8 +1,5 @@
 'use strict';
 
-const chromium = require('chrome-aws-lambda');
-const puppeteer = require('puppeteer');
-
 module.exports.login = async (event, context) => {
 
   console.log("Logging into stackoverflow.com");
@@ -12,10 +9,14 @@ module.exports.login = async (event, context) => {
   try {
     console.log("IS_LOCAL: " + process.env.IS_LOCAL);
     if(process.env.IS_LOCAL) {
+      const puppeteer = require('puppeteer');
+      
       browser = await puppeteer.launch({
           //headless: false
       });
     } else {
+      const chromium = require('chrome-aws-lambda');
+
       browser = await chromium.puppeteer.launch({
         args: chromium.args,
         defaultViewport: chromium.defaultViewport,
