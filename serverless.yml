@@ -17,3 +17,20 @@ functions:
       STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
       STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
       STACKOVERFLOW_DISPLAYNAME: ${ssm:/StackOverflowFanatic/StackOverflow/DisplayName}
+    alarms:
+      - loginFailures
+
+custom:
+  alerts:
+    definitions:
+      barExceptions:
+        metric: loginFailures
+        threshold: 0
+        statistic: Minimum
+        period: 60
+        evaluationPeriods: 1
+        comparisonOperator: GreaterThanThreshold
+        pattern: 'Error: We were expecting the profile name to be' # TODO:
+
+plugins:
+  - serverless-plugin-aws-alerts
