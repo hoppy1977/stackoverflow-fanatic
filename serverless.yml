@@ -23,14 +23,15 @@ functions:
 custom:
   alerts:
     definitions:
-      barExceptions:
-        metric: loginFailures
-        threshold: 0
+      loginFailures:
+        metric: successfulLogins
+        threshold: 1
         statistic: Minimum
-        period: 60
-        evaluationPeriods: 1
-        comparisonOperator: GreaterThanThreshold
-        pattern: 'Error: We were expecting the profile name to be' # TODO:
+        period: 10800 # One datapoint every three hours
+        evaluationPeriods: 4 # Evaluate 4 datapoints
+        datapointsToAlarm: 3 # If there are three failures in that time go to alarm
+        comparisonOperator: LessThanThreshold
+        pattern: 'Logging into stackoverflow.com'
 
 plugins:
   - serverless-plugin-aws-alerts
