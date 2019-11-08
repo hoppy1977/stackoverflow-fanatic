@@ -61,9 +61,13 @@ module.exports.login = async (event, context) => {
     // Work out if the expected display name matches the actual one found on the page
     const expectedDisplayName = process.env.STACKOVERFLOW_DISPLAYNAME;
     if(actualDisplayName == expectedDisplayName) {
-      return context.succeed("Logged into stackoverflow.com and accessed profile page");
+      const successMessage = 'Logged into stackoverflow.com and accessed profile page';
+      console.log(successMessage);
+      return context.succeed(successMessage);
     } else {
-      return context.fail(`Error: We were expecting the profile name to be '${expectedDisplayName}', but it was '${actualDisplayName}'`);
+      const failureMessage = `Error: We were expecting the profile name to be '${expectedDisplayName}', but it was '${actualDisplayName}'`;
+      console.error(failureMessage);
+      return context.fail(failureMessage);
     }
   } catch (error) {
     return context.fail(error);
