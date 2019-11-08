@@ -26,7 +26,7 @@ custom:
       loginFailures:
         metric: successfulLogins
         threshold: 1
-        statistic: Minimum
+        statistic: Maximum
         period: 10800 # One datapoint every three hours
         evaluationPeriods: 4 # Evaluate 4 datapoints
         datapointsToAlarm: 3 # If there are three failures in that time go to alarm
