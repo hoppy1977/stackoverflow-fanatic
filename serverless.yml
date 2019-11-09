@@ -32,6 +32,22 @@ custom:
         datapointsToAlarm: 3 # If there are three failures in that time go to alarm
         comparisonOperator: LessThanThreshold
         pattern: 'Logged into stackoverflow.com and accessed profile page'
-
+    topics:
+      ok:
+        topic: ${self:service}-${self:provider.stage}-alerts-ok
+        notifications:
+          - protocol: sms
+            endpoint: +61487316033
+      alarm:
+        topic: ${self:service}-${self:provider.stage}-alerts-alarm
+        notifications:
+          - protocol: sms
+            endpoint: +61487316033
+      insufficientData:
+        topic: ${self:service}-${self:provider.stage}-alerts-insufficientData
+        notifications:
+          - protocol: sms
+            endpoint: +61487316033
+             
 plugins:
   - serverless-plugin-aws-alerts
