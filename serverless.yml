@@ -37,17 +37,17 @@ custom:
         topic: ${self:service}-${self:provider.stage}-alerts-ok
         notifications:
           - protocol: sms
-            endpoint: +61487316033
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
       alarm:
         topic: ${self:service}-${self:provider.stage}-alerts-alarm
         notifications:
           - protocol: sms
-            endpoint: +61487316033
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
       insufficientData:
         topic: ${self:service}-${self:provider.stage}-alerts-insufficientData
         notifications:
           - protocol: sms
-            endpoint: +61487316033
-             
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
+
 plugins:
   - serverless-plugin-aws-alerts
