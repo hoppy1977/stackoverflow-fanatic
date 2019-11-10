@@ -17,3 +17,37 @@ functions:
       STACKOVERFLOW_EMAIL: ${ssm:/StackOverflowFanatic/StackOverflow/Email}
       STACKOVERFLOW_PASSWORD: ${ssm:/StackOverflowFanatic/StackOverflow/Password}
       STACKOVERFLOW_DISPLAYNAME: ${ssm:/StackOverflowFanatic/StackOverflow/DisplayName}
+    alarms:
+      - loginFailures
+
+custom:
+  alerts:
+    definitions:
+      loginFailures:
+        metric: successfulLogins
+        threshold: 1
+        statistic: Maximum
+        period: 10800 # One datapoint every three hours
+        evaluationPeriods: 4 # Evaluate 4 datapoints
+        datapointsToAlarm: 3 # If there are three failures in that time go to alarm
+        comparisonOperator: LessThanThreshold
+        pattern: 'Logged into stackoverflow.com and accessed profile page'
+    topics:
+      ok:
+        topic: ${self:service}-${self:provider.stage}-alerts-ok
+        notifications:
+          - protocol: sms
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
+      alarm:
+        topic: ${self:service}-${self:provider.stage}-alerts-alarm
+        notifications:
+          - protocol: sms
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
+      insufficientData:
+        topic: ${self:service}-${self:provider.stage}-alerts-insufficientData
+        notifications:
+          - protocol: sms
+            endpoint: ${ssm:/StackOverflowFanatic/PhoneNumber}
+
+plugins:
+  - serverless-plugin-aws-alerts
