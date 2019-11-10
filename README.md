@@ -46,7 +46,7 @@ Now you just need to put your credentials in the AWS parameter store:
 | Parameter Name                                  | Value         |
 | ----------------------------------------------- | ------------- |
 | /StackOverflowFanatic/PhoneNumber               | The mobile phone number that you  want to receive any SMS alert messages on.<br/>Must be in [E.164](https://en.wikipedia.org/wiki/E.164) format. |
-| /StackOverflowFanatic/StackOverflow/DisplayName | Your stackoverflow username.<br/>This compared against the value that is read from the page after you have logged in to ensure that the script has logged into the correct page. |
+| /StackOverflowFanatic/StackOverflow/DisplayName | Your stackoverflow username.<br/>This is compared against the value that is read from the page after you have logged in to ensure that the script has logged into the correct page. |
 | /StackOverflowFanatic/StackOverflow/Email       | Your stackoverflow email address.<br/>Used for logging in. |
 | /StackOverflowFanatic/StackOverflow/Password    | Your stackoverflow password.  |
 
@@ -58,6 +58,9 @@ serverless deploy
 
 # Standard Operation
 Out of the box the tool is configured to login to your stackoverflow account and browse to the profile page every three hours.
+
 If for some reason it fails to login three times in a row AWS will set the alert status, and you will receive a text message notifying you that there has been a problem.
+
 Note that if you get a text messagge like this you have a window of 15 hours to log into your stackoverflow account to keep your streak going!
+
 When you have fixed the problem and the system is operating normally agin you will get another message confirming that everything is ok.
