@@ -50,13 +50,13 @@ Now you just need to put your credentials in the AWS parameter store:
 | /StackOverflowFanatic/StackOverflow/Email       | Your stackoverflow email address.<br/>Used for logging in. |
 | /StackOverflowFanatic/StackOverflow/Password    | Your stackoverflow password.  |
 
-# Deployment
+## Deployment
 You're almost done! Now you just need to deploy to the cloud:
 ```
 serverless deploy
 ```
 
-# Standard Operation
+## Standard Operation
 Out of the box the tool is configured to login to your stackoverflow account and browse to the profile page every three hours.
 
 If for some reason it fails to login three times in a row AWS will set the alert status, and you will receive a text message notifying you that there has been a problem.
