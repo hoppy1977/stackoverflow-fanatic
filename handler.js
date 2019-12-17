@@ -31,7 +31,7 @@ module.exports.login = async (event, context) => {
     
     // Click on the 'Log in' button
     await Promise.all([
-      page.click('body > header > div > ol.overflow-x-auto.ml-auto.-secondary.grid.ai-center.list-reset.h100.user-logged-out > li.-ctas > a.login-link.s-btn.btn-topbar-clear.py8.js-gps-track'),
+      page.click('body > header > div > ol.overflow-x-auto.ml-auto.-secondary.grid.ai-center.list-reset.h100.user-logged-out > li.-ctas > a.login-link.s-btn.s-btn__filled.py8.js-gps-track'),
       page.waitForNavigation(),    
     ]);
 
