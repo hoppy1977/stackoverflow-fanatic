@@ -12,7 +12,7 @@ module.exports.login = async (event, context) => {
       const puppeteer = require('puppeteer');
       
       browser = await puppeteer.launch({
-          headless: false
+          //headless: false
       });
     } else {
       const chromium = require('chrome-aws-lambda');
