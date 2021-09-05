@@ -56,7 +56,7 @@ module.exports.login = async (event, context) => {
     ])
 
     // Work out what the display name is
-    const actualDisplayName = await page.$eval('#mainbar-full > div.d-flex.ai-center.jc-space-between.mb16.js-user-header > div.ml12.d-flex.ai-center > div', e => e.innerText);
+    const actualDisplayName = await page.$eval('#mainbar-full > div.ps-relative.mb16 > div.d-flex.ai-center.fw-wrap.gs16.md\\:fd-column.md\\:ai-start > div > div > div.flex--item.mb12.fs-headline2.lh-xs', e => e.innerText);
 
     // Work out if the expected display name matches the actual one found on the page
     const expectedDisplayName = process.env.STACKOVERFLOW_DISPLAYNAME;
