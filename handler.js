@@ -31,7 +31,7 @@ module.exports.login = async (event, context) => {
     
     // Click on the 'Log in' button
     await Promise.all([
-      page.click('body > header > div > ol.overflow-x-auto.ml-auto.-secondary.d-flex.ai-center.list-reset.h100.user-logged-out > li.-ctas > a.login-link.s-btn.s-btn__filled.py8.js-gps-track'),
+      page.click('body > header > div > ol.s-topbar--content > li:nth-child(3) > a'),
       page.waitForNavigation(),
     ]);
 
@@ -51,7 +51,7 @@ module.exports.login = async (event, context) => {
 
     // Click on the profile icon
     await Promise.all([
-      page.click('body > header > div > ol.overflow-x-auto.ml-auto.-secondary.d-flex.ai-center.list-reset.h100.user-logged-in > li:nth-child(2) > a'),
+      page.click('body > header > div > ol.s-topbar--content > li:nth-child(2) > a'),
       page.waitForNavigation(),
     ])
 
