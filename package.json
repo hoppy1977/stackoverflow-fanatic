@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "puppeteer": "^2.0.0",
-    "serverless": "^1.57.0",
+    "serverless": "^3.25.1",
     "serverless-plugin-aws-alerts": "^1.4.0"
   }
 }
